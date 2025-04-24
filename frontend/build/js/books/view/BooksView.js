@@ -1,4 +1,4 @@
-import Observer from "../../shared/Observer";
+import Observer from "../../shared/Observer.js";
 import BooksTemplate from "../template/BooksTemplate.js";
 export default class BooksView extends Observer {
     booksHTML;

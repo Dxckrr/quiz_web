@@ -20,6 +20,7 @@ export default class BooksModel extends Subject {
         return [NullBook];
     };
     searchBooks = (search) => {
+        console.log(search);
         this.notifyALL();
     };
 }

@@ -1,5 +1,5 @@
-import Books from "../../books/Books";
-import Searchbar from "../../searchbar/Searchbar";
+import Books from "../../books/Books.js";
+import Searchbar from "../../searchbar/Searchbar.js";
 
 export default class IndexView {
     private readonly main: HTMLElement;

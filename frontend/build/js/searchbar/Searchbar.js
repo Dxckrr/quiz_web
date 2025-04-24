@@ -1,5 +1,5 @@
-import SearchbarController from "./controller/SearchbarController";
-import SearchbarView from "./view/SearchbarView";
+import SearchbarController from "./controller/SearchbarController.js";
+import SearchbarView from "./view/SearchbarView.js";
 export default class Searchbar {
     view;
     controller;
@@ -9,5 +9,8 @@ export default class Searchbar {
     }
     init = () => {
         this.controller.init();
+    };
+    getSearchbarHTML = () => {
+        return this.view.getSearchbarHTML();
     };
 }

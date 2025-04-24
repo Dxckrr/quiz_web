@@ -1,5 +1,5 @@
-import SearchbarController from "./controller/SearchbarController";
-import SearchbarView from "./view/SearchbarView"
+import SearchbarController from "./controller/SearchbarController.js";
+import SearchbarView from "./view/SearchbarView.js"
 
 export default class Searchbar {
     private readonly view: SearchbarView;

@@ -1,6 +1,6 @@
-import BooksController from "./controller/BooksController";
-import BooksModel from "./model/BooksModel";
-import BooksView from "./view/BooksView";
+import BooksController from "./controller/BooksController.js";
+import BooksModel from "./model/BooksModel.js";
+import BooksView from "./view/BooksView.js";
 
 export default class Books {
     private readonly booksController: BooksController;
