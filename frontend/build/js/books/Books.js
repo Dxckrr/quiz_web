@@ -1,6 +1,6 @@
-import BooksController from "./controller/BooksController";
-import BooksModel from "./model/BooksModel";
-import BooksView from "./view/BooksView";
+import BooksController from "./controller/BooksController.js";
+import BooksModel from "./model/BooksModel.js";
+import BooksView from "./view/BooksView.js";
 export default class Books {
     booksController;
     booksModel;
@@ -15,5 +15,8 @@ export default class Books {
     };
     getBooksHTML = () => {
         return this.booksView.getBooksHTML();
+    };
+    searchBooks = async (search) => {
+        return this.booksController.searchBooks(search);
     };
 }

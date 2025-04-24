@@ -1,5 +1,5 @@
-import BooksModel from "../model/BooksModel";
-import BooksView from "../view/BooksView";
+import BooksModel from "../model/BooksModel.js";
+import BooksView from "../view/BooksView.js";
 
 export default class BooksController {
     

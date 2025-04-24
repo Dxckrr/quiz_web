@@ -29,6 +29,7 @@ export default class BooksModel extends Subject<BooksView>{
     }
 
     readonly searchBooks = (search: string) => {
+        console.log(search)
         this.notifyALL();
     }
 
