@@ -1,7 +1,5 @@
-
 export default class SearchbarTemplate {
-
-    readonly render = () => {
+    render = () => {
         return `  
               <div class="search-input">
             <svg class="in-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -12,5 +10,5 @@ export default class SearchbarTemplate {
             <input type="text" placeholder="Search for any author, abstract, title or year">
             <button>Search</button>
         </div>`;
-    }
+    };
 }
