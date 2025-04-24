@@ -15,9 +15,9 @@ export default class SearchbarView {
         })
     }
 
-    readonly render = () => {
+    readonly render = async () => {
         const template = new SearchbarTemplate();
-        this.SearchbarHTML.innerHTML = template.render();
+        this.SearchbarHTML.innerHTML = await template.render();
     }
 
     readonly searchBooks = async () => {

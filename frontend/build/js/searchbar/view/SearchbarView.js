@@ -13,9 +13,9 @@ export default class SearchbarView {
             this.searchBooks();
         });
     };
-    render = () => {
+    render = async () => {
         const template = new SearchbarTemplate();
-        this.SearchbarHTML.innerHTML = template.render();
+        this.SearchbarHTML.innerHTML = await template.render();
     };
     searchBooks = async () => {
         const input = this.SearchbarHTML.querySelector('input');
