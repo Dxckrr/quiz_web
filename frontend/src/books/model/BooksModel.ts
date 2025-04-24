@@ -28,8 +28,8 @@ export default class BooksModel extends Subject<BooksView>{
         return [NullBook]
     }
 
-    readonly searchBooks = () => {
-
+    readonly searchBooks = (search: string) => {
+        this.notifyALL();
     }
 
 }
