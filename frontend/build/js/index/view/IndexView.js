@@ -13,6 +13,8 @@ export default class IndexView {
     }
     init = () => {
         console.log('IndexView initialized');
+        this.initBooks();
+        this.initSearchbar();
     };
     initBooks = () => {
         this.books.init();

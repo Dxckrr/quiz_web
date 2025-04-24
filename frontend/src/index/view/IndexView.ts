@@ -15,6 +15,8 @@ export default class IndexView {
 
     readonly init = () => {
         console.log('IndexView initialized');
+        this.initBooks();
+        this.initSearchbar();
     }
 
     readonly initBooks = () => {
