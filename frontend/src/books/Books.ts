@@ -23,4 +23,8 @@ export default class Books {
     readonly getBooksHTML = (): HTMLElement => {
         return this.booksView.getBooksHTML();
     }
+
+    readonly searchBooks = async (search: string): Promise<void> => {
+        return this.booksController.searchBooks(search);
+    }
 }

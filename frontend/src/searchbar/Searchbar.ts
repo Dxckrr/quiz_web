@@ -13,4 +13,8 @@ export default class Searchbar {
     readonly init = () => {
         this.controller.init();
     }
+
+    readonly getSearchbarHTML = () => {
+        return this.view.getSearchbarHTML();
+    }
 }
