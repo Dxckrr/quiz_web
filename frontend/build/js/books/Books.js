@@ -16,4 +16,7 @@ export default class Books {
     getBooksHTML = () => {
         return this.booksView.getBooksHTML();
     };
+    searchBooks = async (search) => {
+        return this.booksController.searchBooks(search);
+    };
 }
