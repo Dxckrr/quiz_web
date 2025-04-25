@@ -18,10 +18,18 @@ export default class SearchbarView {
     };
     handleSearch = () => {
         const button = this.SearchbarHTML.querySelector("#search-button");
+        const input = this.SearchbarHTML.querySelector(".search-input");
         button.addEventListener("click", async (e) => {
             e.preventDefault();
             console.log("button clicked");
             await this.searchBooks();
+        });
+        input.addEventListener("keydown", async (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                console.log("enter key pressed");
+                await this.searchBooks();
+            }
         });
     };
     searchBooks = async () => {
