@@ -13,4 +13,7 @@ export default class BooksController {
     searchBooks = async (search) => {
         return this.model.searchBooks(search);
     };
+    filterBooks = async (keywords) => {
+        return this.model.filterByKeywords(keywords);
+    };
 }

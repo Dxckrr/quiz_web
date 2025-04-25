@@ -22,11 +22,20 @@ export default class SearchbarView {
     const button = this.SearchbarHTML.querySelector(
       "#search-button"
     ) as HTMLButtonElement;
+    const input = this.SearchbarHTML.querySelector(
+      ".search-input"
+    ) as HTMLInputElement;
     button.addEventListener("click", async (e) => {
       e.preventDefault();
       console.log("button clicked");
       await this.searchBooks();
     });
+    input.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        console.log("enter key pressed");
+        await this.searchBooks();
+      }});
   };
 
   readonly searchBooks = async () => {
