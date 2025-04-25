@@ -47,6 +47,8 @@ export default class BooksModel extends Subject {
                 const bookKeywords = rawKeywords
                     .split(",")
                     .map(k => k.trim().toLowerCase());
+                //'every' cuz it need to be the EXACT word , otherwise if 
+                // not that strict needed so u could use 'some'
                 return keywords.every((keyword) => bookKeywords.includes(keyword.toLowerCase()));
             });
         }

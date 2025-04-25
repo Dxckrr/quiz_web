@@ -17,13 +17,35 @@ export default class FilterView {
             radio.addEventListener("change", this.filterData);
         });
     };
+    handleDefaultKeyboard = () => {
+        let currentSelected = null;
+        const radios = this.filterHTML.querySelectorAll('input[type="radio"][name="filter"]');
+        radios.forEach((radio) => {
+            radio.addEventListener("click", function () {
+                if (currentSelected === this) {
+                    this.checked = false;
+                    currentSelected = null;
+                }
+                else {
+                    currentSelected = this;
+                }
+            });
+        });
+    };
     filterData = async () => {
         const input = this.filterHTML.querySelector(".input input");
-        const keywords = input.value.split(",").map((keyword) => keyword.trim()).filter((keyword) => keyword !== "");
+        const keywords = input.value
+            .split(",")
+            .map((keyword) => keyword.trim())
+            .filter((keyword) => keyword !== "");
         const selectedRadio = this.filterHTML.querySelector("input[type='radio']:checked");
-        const category = selectedRadio ? selectedRadio.parentElement?.textContent?.trim() : null;
-        const allKeywords = [...keywords, category].filter((keyword) => typeof keyword === "string" && keyword.trim() !== ""); // Eliminar cualquier valor vacío
-        if (allKeywords === null || allKeywords === undefined || allKeywords.length === 0)
+        const category = selectedRadio
+            ? selectedRadio.parentElement?.textContent?.trim()
+            : null;
+        const allKeywords = [...keywords, category].filter((keyword) => typeof keyword === "string" && keyword.trim() !== "");
+        if (allKeywords === null ||
+            allKeywords === undefined ||
+            allKeywords.length === 0)
             return;
         await this.filterByKeywords(allKeywords);
     };
