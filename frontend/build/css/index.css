@@ -116,6 +116,7 @@ body {
     border: 0.5px solid var(--font-bg);
     border-radius: var(--border-radius);
     padding: 2px 4px 2px 4px;
+    text-decoration: none;
 
 }
 .card-footer .card-refs {

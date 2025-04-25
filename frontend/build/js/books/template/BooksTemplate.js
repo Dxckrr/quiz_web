@@ -22,8 +22,10 @@ export default class BooksTemplate {
                 .join("")}
                     </ul>
                     <footer class="card-footer">
-                        <button class="card-button">${await this.formatPt(book._pt)}</button>
-                        <section class="card-refs">
+                    <a class="card-button" href='${book._url}' target="_blank">
+                      ${await this.formatPt(book._pt)}
+                    </a>
+                    <section class="card-refs">
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-building-fill" viewBox="0 0 16 16">
