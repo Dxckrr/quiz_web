@@ -14,10 +14,11 @@ export default class BooksView extends Observer {
         console.log('BooksView initialized');
         this.render();
     };
-    render = () => {
+    render = async () => {
         const model = this.subject;
-        const template = new BooksTemplate();
-        this.booksHTML.innerHTML = template.render();
+        console.log(model.getBooksData());
+        const template = new BooksTemplate(model.getBooksData());
+        this.booksHTML.innerHTML = await template.render();
         this.paginationHTML.innerHTML = template.renderPagination(model.getTotalPages());
         this.assignPaginationEvent(model);
     };

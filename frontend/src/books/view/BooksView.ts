@@ -9,9 +9,9 @@ export default class BooksView extends Observer<BooksModel> {
     
     constructor(booksModel: BooksModel) {
         super(booksModel);
-        this.container = document.createElement('books') as HTMLElement;
-        this.booksHTML = document.createElement('booksData') as HTMLElement;
-        this.paginationHTML = document.createElement('pagination') as HTMLElement;
+        this.container = document.createElement('books');
+        this.booksHTML = document.createElement('booksData');
+        this.paginationHTML = document.createElement('pagination');
     }
     
     readonly init = () => {
@@ -19,11 +19,12 @@ export default class BooksView extends Observer<BooksModel> {
         this.render();
     }
     
-    readonly render = () => {
+    readonly render = async () => {
         const model = this.subject as BooksModel;
-        const template = new BooksTemplate();
+        console.log(model.getBooksData());
+        const template = new BooksTemplate(model.getBooksData());
 
-        this.booksHTML.innerHTML = template.render();
+        this.booksHTML.innerHTML = await template.render();
         this.paginationHTML.innerHTML = template.renderPagination(model.getTotalPages());
         this.assignPaginationEvent(model);
     }

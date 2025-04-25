@@ -97,10 +97,11 @@ body {
     background: white;
     margin-top: 20px;
 }
-.card figure {
-    width: 15%;
-    margin: 0 10px 0 10x;
+.card .card-aside {
+    width: auto;
+    margin: 10px 20px 0px 10px;
 }
-.card figure img {
-    width: 100%;
+.card .card-aside img {
+    width: 70px;
+    height: auto;
 }

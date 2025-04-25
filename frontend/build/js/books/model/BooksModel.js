@@ -18,6 +18,7 @@ export default class BooksModel extends Subject {
         this.filteredBooks = this.booksData;
     };
     getBooksData = () => {
+        console.log('filteredBooks:', this.filteredBooks);
         return this.filteredBooks.slice((this.currentPage - 1) * this.gridSize, this.currentPage * this.gridSize);
     };
     searchBooks = (search) => {
@@ -37,11 +38,13 @@ export default class BooksModel extends Subject {
         this.notifyALL();
     };
     loadData = async () => {
-        const books = await fetch('http://10.152.164.61:1802/ref/references');
+        // class ip http://10.152.164.61:1802
+        const books = await fetch('http://localhost:1802/ref/references');
         if (!books.ok) {
             return [NullBook];
         }
-        return await books.json();
+        const res = await books.json();
+        return await res.papers;
     };
     // Pages functions
     getTotalPages = () => {
