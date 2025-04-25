@@ -37,6 +37,21 @@ export default class BooksModel extends Subject {
         }
         this.notifyALL();
     };
+    filterByKeywords = (keywords) => {
+        if (keywords.length === 0) {
+            this.filteredBooks = this.booksData;
+        }
+        else {
+            this.filteredBooks = this.booksData.filter((book) => {
+                const rawKeywords = book._keywords || "";
+                const bookKeywords = rawKeywords
+                    .split(",")
+                    .map(k => k.trim().toLowerCase());
+                return keywords.every((keyword) => bookKeywords.includes(keyword.toLowerCase()));
+            });
+        }
+        this.notifyALL();
+    };
     loadData = async () => {
         // class ip http://10.152.164.61:1802
         const books = await fetch('http://localhost:1802/ref/references');

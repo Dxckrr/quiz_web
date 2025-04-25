@@ -48,6 +48,25 @@ export default class BooksModel extends Subject<BooksView>{
         }
         this.notifyALL();
     }
+    readonly filterByKeywords = (keywords: string[]) => {
+        if (keywords.length === 0) {
+          this.filteredBooks = this.booksData;
+        } else {
+          this.filteredBooks = this.booksData.filter((book) => {
+            const rawKeywords = book._keywords || "";            
+            const bookKeywords = rawKeywords
+              .split(",")
+              .map(k => k.trim().toLowerCase());
+      
+            return keywords.every((keyword) =>
+              bookKeywords.includes(keyword.toLowerCase())
+            );
+          });
+        }
+        this.notifyALL();
+      };
+      
+      
 
     readonly loadData = async(): Promise<Book[]> =>{
         // class ip http://10.152.164.61:1802

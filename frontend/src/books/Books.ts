@@ -27,4 +27,7 @@ export default class Books {
     readonly searchBooks = async (search: string): Promise<void> => {
         return this.booksController.searchBooks(search);
     }
+    readonly filterBooks = async (filter: string[]): Promise<void> => {
+        return this.booksController.filterBooks(filter);
+    }
 }

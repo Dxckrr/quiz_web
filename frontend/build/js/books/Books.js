@@ -19,4 +19,7 @@ export default class Books {
     searchBooks = async (search) => {
         return this.booksController.searchBooks(search);
     };
+    filterBooks = async (filter) => {
+        return this.booksController.filterBooks(filter);
+    };
 }
