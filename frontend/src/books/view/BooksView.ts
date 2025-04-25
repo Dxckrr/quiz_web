@@ -25,7 +25,7 @@ export default class BooksView extends Observer<BooksModel> {
         const template = new BooksTemplate(model.getBooksData());
 
         this.booksHTML.innerHTML = await template.render();
-        this.paginationHTML.innerHTML = template.renderPagination(model.getTotalPages());
+        this.paginationHTML.innerHTML = template.renderPagination(model.getPages());
         this.assignPaginationEvent(model);
     }
 
@@ -39,6 +39,13 @@ export default class BooksView extends Observer<BooksModel> {
         nextButton?.addEventListener('click', () => {
             model.nextPage();
         })
+        const pages: number[] = model.getPages();
+        for (let i = 0; i < pages.length; i++) {
+            const button = document.getElementById(`${pages[i]}`);
+            button?.addEventListener('click', () => {
+                model.setPage(pages[i] as number);
+            })
+        }
     }
 
     readonly update = () => {

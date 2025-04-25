@@ -74,7 +74,15 @@ export default class BooksTemplate {
     if(keywords === null || keywords === undefined) return ['Not found']
     return keywords.split(regex)
   };
-  readonly renderPagination = (totalPages: number): string => {
-    return `1 / ${totalPages}`;
+  
+  readonly renderPagination = (pages: number[]): string => {
+    let html = '<div class="pagination">';
+    html += `<div class="pagination-button" id="prev-button"> < </div>`;
+    for (let i = 0; i < pages.length; i++) {
+      html += `<div class="pagination-button" id="${i}">${pages[i]}</div>`;
+    }
+    html += `<div class="pagination-button" id="next-button"> > </div>`;
+    html += '</div>';
+    return html;
   };
 }

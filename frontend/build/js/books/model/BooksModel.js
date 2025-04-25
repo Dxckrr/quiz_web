@@ -51,6 +51,25 @@ export default class BooksModel extends Subject {
         const size = this.filteredBooks.length;
         return Math.ceil(size / this.gridSize);
     };
+    getPages = () => {
+        let pages = [];
+        let start = this.getCurrentPage() - 2;
+        let end = this.getCurrentPage() + 3;
+        if (this.getTotalPages() > 5) {
+            if (start < 0) {
+                end -= start;
+                start = 0;
+            }
+            if (end > this.getTotalPages()) {
+                start -= (this.getTotalPages() - end);
+                end = this.getTotalPages();
+            }
+        }
+        for (let i = start + 1; i <= end; i++) {
+            pages.push(i);
+        }
+        return pages;
+    };
     nextPage = () => {
         if (this.currentPage < this.getTotalPages()) {
             this.setPage(this.currentPage + 1);

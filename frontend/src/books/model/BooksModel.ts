@@ -65,6 +65,27 @@ export default class BooksModel extends Subject<BooksView>{
         return Math.ceil(size / this.gridSize);
     }
 
+    readonly getPages = (): number[] => {
+        let pages: number[] = [];
+        let start = this.getCurrentPage() - 2;
+        let end = this.getCurrentPage() + 3;
+
+        if (this.getTotalPages() > 5) {
+            if (start < 0) {
+                end -= start;
+                start = 0;
+            }
+            if (end > this.getTotalPages()) {
+                start -= (this.getTotalPages() - end);
+                end = this.getTotalPages();
+            }
+        }
+        for (let i = start+1; i <= end; i++) {
+            pages.push(i);
+        }
+        return pages;
+    }
+
     readonly nextPage = () => {
         if (this.currentPage < this.getTotalPages()) {
             this.setPage(this.currentPage + 1);
