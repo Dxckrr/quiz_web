@@ -1,7 +1,7 @@
 
 export default class SearchbarTemplate {
 
-    readonly render = async (): Promise<string> => {
+    readonly render = () => {
         return `  
             <div class="search-input">
                 <svg class="in-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

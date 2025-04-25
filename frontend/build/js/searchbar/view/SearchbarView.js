@@ -12,10 +12,11 @@ export default class SearchbarView {
             e.preventDefault();
             this.searchBooks();
         });
+        this.render();
     };
-    render = async () => {
+    render = () => {
         const template = new SearchbarTemplate();
-        this.SearchbarHTML.innerHTML = await template.render();
+        this.SearchbarHTML.innerHTML = template.render();
     };
     searchBooks = async () => {
         const input = this.SearchbarHTML.querySelector('input');

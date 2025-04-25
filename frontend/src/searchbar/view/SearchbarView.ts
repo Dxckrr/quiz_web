@@ -13,11 +13,12 @@ export default class SearchbarView {
             e.preventDefault();
             this.searchBooks();
         })
+        this.render();
     }
 
-    readonly render = async () => {
+    readonly render = () => {
         const template = new SearchbarTemplate();
-        this.SearchbarHTML.innerHTML = await template.render();
+        this.SearchbarHTML.innerHTML = template.render();
     }
 
     readonly searchBooks = async () => {

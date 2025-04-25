@@ -1,4 +1,4 @@
-import Observer from "../../shared/Observer";
+import Observer from "../../shared/Observer.js";
 import BooksModel from "../model/BooksModel.js";
 import BooksTemplate from "../template/BooksTemplate.js";
 
