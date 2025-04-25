@@ -3,10 +3,14 @@ import NullBook from "../types/NullBook.js";
 export default class BooksModel extends Subject {
     booksData;
     filteredBooks;
+    currentPage;
+    gridSize;
     constructor() {
         super();
         this.booksData = [NullBook];
         this.filteredBooks = [NullBook];
+        this.currentPage = 1;
+        this.gridSize = 5;
     }
     init = async () => {
         console.log('BooksModel initialized');
@@ -14,13 +18,55 @@ export default class BooksModel extends Subject {
         this.filteredBooks = this.booksData;
     };
     getBooksData = () => {
-        return this.filteredBooks;
-    };
-    loadData = async () => {
-        return [NullBook];
+        return this.filteredBooks.slice((this.currentPage - 1) * this.gridSize, this.currentPage * this.gridSize);
     };
     searchBooks = (search) => {
-        console.log(search);
+        if (search.length === 0) {
+            this.filteredBooks = this.booksData;
+        }
+        else {
+            this.filteredBooks = this.booksData.filter((books) => {
+                const title = books._title?.toLowerCase() || "";
+                const year = books._year?.toString() || "";
+                const author = books._author?.toString() || "";
+                const extract = books._abstract?.toString() || "";
+                const aws = [title, year, author, extract].join(" ");
+                return aws.includes(search.toLowerCase());
+            });
+        }
         this.notifyALL();
     };
+    loadData = async () => {
+        const books = await fetch('http://10.152.164.61:1802/ref/references');
+        if (!books.ok) {
+            return [NullBook];
+        }
+        return await books.json();
+    };
+    // Pages functions
+    getTotalPages = () => {
+        const size = this.filteredBooks.length;
+        return Math.ceil(size / this.gridSize);
+    };
+    nextPage = () => {
+        if (this.currentPage < this.getTotalPages()) {
+            this.setPage(this.currentPage + 1);
+        }
+        else if (this.currentPage === this.getTotalPages()) {
+            this.setPage(1);
+        }
+    };
+    previousPage = () => {
+        if (this.currentPage > 1) {
+            this.setPage(this.currentPage - 1);
+        }
+        else if (this.currentPage === 1) {
+            this.setPage(this.getTotalPages());
+        }
+    };
+    setPage = (n) => {
+        this.currentPage = n;
+        this.notifyALL();
+    };
+    getCurrentPage = () => this.currentPage;
 }

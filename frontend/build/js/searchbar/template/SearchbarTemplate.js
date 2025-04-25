@@ -1,7 +1,6 @@
 export default class SearchbarTemplate {
     render = () => {
         return `  
-            <div class="search-input">
                 <svg class="in-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-bag" viewBox="0 0 16 16">
                     <path
@@ -9,7 +8,6 @@ export default class SearchbarTemplate {
                 </svg>
                 <input type="text" placeholder="Search for any author, abstract, title or year">
                 <button>Search</button>
-            </div>
             `;
     };
 }

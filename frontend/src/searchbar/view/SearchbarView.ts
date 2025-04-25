@@ -5,6 +5,7 @@ export default class SearchbarView {
 
     constructor(readonly searchBooksFn: (search: string) => Promise<void> ) {
         this.SearchbarHTML = document.createElement('searchbar') as HTMLElement;
+        this.SearchbarHTML.classList.add('search-input');
     }
 
     readonly init = () => {

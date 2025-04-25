@@ -5,6 +5,7 @@ export default class SearchbarView {
     constructor(searchBooksFn) {
         this.searchBooksFn = searchBooksFn;
         this.SearchbarHTML = document.createElement('searchbar');
+        this.SearchbarHTML.classList.add('search-input');
     }
     init = () => {
         console.log('SearchbarView initialized');
