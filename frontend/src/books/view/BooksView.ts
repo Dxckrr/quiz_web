@@ -21,12 +21,14 @@ export default class BooksView extends Observer<BooksModel> {
     
     readonly render = async () => {
         const model = this.subject as BooksModel;
-        console.log(model.getBooksData());
+        console.log(model.getCurrentPage());
         const template = new BooksTemplate(model.getBooksData());
 
         this.booksHTML.innerHTML = await template.render();
         this.paginationHTML.innerHTML = template.renderPagination(model.getPages());
         this.assignPaginationEvent(model);
+
+        document.getElementById(`${model.getCurrentPage()}`)?.classList.toggle('active');
     }
 
     private readonly assignPaginationEvent = (model: BooksModel) => {

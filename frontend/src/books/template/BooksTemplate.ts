@@ -81,7 +81,7 @@ export default class BooksTemplate {
     let html = '<div class="pagination">';
     html += `<div class="pagination-button" id="prev-button"> < </div>`;
     for (let i = 0; i < pages.length; i++) {
-      html += `<div class="pagination-button" id="${i}">${pages[i]}</div>`;
+      html += `<div class="pagination-button" id="${pages[i]}">${pages[i]}</div>`;
     }
     html += `<div class="pagination-button" id="next-button"> > </div>`;
     html += '</div>';

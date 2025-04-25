@@ -16,11 +16,12 @@ export default class BooksView extends Observer {
     };
     render = async () => {
         const model = this.subject;
-        console.log(model.getBooksData());
+        console.log(model.getCurrentPage());
         const template = new BooksTemplate(model.getBooksData());
         this.booksHTML.innerHTML = await template.render();
         this.paginationHTML.innerHTML = template.renderPagination(model.getPages());
         this.assignPaginationEvent(model);
+        document.getElementById(`${model.getCurrentPage()}`)?.classList.toggle('active');
     };
     assignPaginationEvent = (model) => {
         const nextButton = document.getElementById('next-button');
