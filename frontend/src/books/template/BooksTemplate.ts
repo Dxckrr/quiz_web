@@ -1,7 +1,11 @@
 
 export default class BooksTemplate {
 
-    readonly render = () => {
-        return ``
+    readonly render = (): string => {
+        return ``;
+    }
+
+    readonly renderPagination = (totalPages: number): string => {
+        return `1 / ${totalPages}`;
     }
 }
